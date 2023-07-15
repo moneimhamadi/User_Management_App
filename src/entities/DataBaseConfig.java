@@ -163,7 +163,7 @@ public class DataBaseConfig implements IUserManagement {
 		} catch (SQLException e) {
 			System.out.println("Error calculating average salary: " + e.getMessage());
 		}
-		return 0; // Return 0 in case of an error or no data available
+		return 0; 
 	}
 
 	
@@ -320,10 +320,8 @@ public class DataBaseConfig implements IUserManagement {
 	 @Override
 	 public void exportUsersToCSV(List<User> users, String filePath) {
 	        try (FileWriter writer = new FileWriter(filePath)) {
-	            // Write CSV header
 	            writer.append("Name,Salary,Age,Poste\n");
 
-	            // Write user data to the CSV file
 	            for (User user : users) {
 	                writer.append(user.getName()).append(",");
 	                writer.append(String.valueOf(user.getSalary())).append(",");
@@ -460,7 +458,6 @@ public class DataBaseConfig implements IUserManagement {
 				}
 				break;
 			case 7:
-				// Display the available postes
 				List<String> Allpostes = userManagement.getPostes();
 				System.out.println("Available Postes:");
 				for (int i = 0; i < Allpostes.size(); i++) {
@@ -469,9 +466,8 @@ public class DataBaseConfig implements IUserManagement {
 
 				System.out.print("Choose poste (enter the number): ");
 				posteChoice = scanner.nextInt();
-				scanner.nextLine(); // Consume the newline character
+				scanner.nextLine(); 
 
-				// Validate the poste choice
 				if (posteChoice >= 1 && posteChoice <= Allpostes.size()) {
 					String poste = Allpostes.get(posteChoice - 1);
 
@@ -496,7 +492,7 @@ public class DataBaseConfig implements IUserManagement {
 			    for (User user : usersSortedByAge) {
 			        System.out.println(user);
 			    }
-			    scanner.nextLine(); // Consume the newline character
+			    scanner.nextLine(); 
 			    break;
 			    
 			 case 10:
@@ -508,7 +504,6 @@ public class DataBaseConfig implements IUserManagement {
                  break;
                  
 			 case 12:
-	                // Export Users to CSV
 	                List<User> ToCsvUsers = userManagement.getUsers();
 	                String filePath = "C:\\Users\\monei\\Documents\\users.csv";
 	                userManagement.exportUsersToCSV(ToCsvUsers, filePath);
